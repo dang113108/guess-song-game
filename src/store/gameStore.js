@@ -2,6 +2,7 @@ import { ref } from 'vue'
 
 const questions = ref([]) // 儲存題庫
 const currentQuestionIndex = ref(0) // 顯示當前題目的索引
+const pendingAction = ref(null) // 用來存儲下一個動作
 
 const loadQuestions = async () => {
   try {
@@ -26,24 +27,26 @@ const getCurrentQuestion = () => {
   return questions.value[currentQuestionIndex.value] // 根據索引取得題目
 }
 
-const nextQuestion = (isCorrect = null) => {
-  // 記錄當前問題的回答結果
-  if (isCorrect !== null && currentQuestionIndex.value < questions.value.length) {
-    questions.value[currentQuestionIndex.value].isCorrect = isCorrect
+// 標記當前問題為答對
+const markAsCorrect = () => {
+  if (currentQuestionIndex.value < questions.value.length) {
+    questions.value[currentQuestionIndex.value].isCorrect = true
   }
+}
 
+// 標記當前問題為答錯
+const markAsIncorrect = () => {
+  if (currentQuestionIndex.value < questions.value.length) {
+    questions.value[currentQuestionIndex.value].isCorrect = false
+  }
+}
+
+// 移動到下一題（不會自動記錄答案）
+const goToNextQuestion = () => {
   currentQuestionIndex.value++
   if (currentQuestionIndex.value >= questions.value.length) {
-    currentQuestionIndex.value = 0 // 回到第一題，或你可以選擇結束遊戲
+    currentQuestionIndex.value = 0
   }
-}
-
-const correctAnswer = () => {
-  nextQuestion(true)
-}
-
-const incorrectAnswer = () => {
-  nextQuestion(false)
 }
 
 export const useGameStore = () => ({
@@ -51,7 +54,7 @@ export const useGameStore = () => ({
   currentQuestionIndex,
   loadQuestions,
   getCurrentQuestion,
-  nextQuestion,
-  correctAnswer,
-  incorrectAnswer
+  markAsCorrect,
+  markAsIncorrect,
+  goToNextQuestion
 })

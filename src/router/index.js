@@ -29,7 +29,11 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  // 強制重新載入相同路由
+  scrollBehavior() {
+    return { top: 0 }
+  }
 })
 
 export default router

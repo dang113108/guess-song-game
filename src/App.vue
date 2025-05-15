@@ -2,11 +2,26 @@
   <div class="app-container">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
-        <component :is="Component" />
+        <component :is="Component" :key="$route.fullPath" />
       </transition>
     </router-view>
   </div>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+// 添加全局導航守衛，確保即使路由相同也會重新渲染組件
+router.beforeEach((to, from, next) => {
+  // 如果路由相同，強制重新渲染
+  if (to.path === from.path) {
+    to.meta.forceRefresh = true
+  }
+  next()
+})
+</script>
 
 <style>
 .app-container {

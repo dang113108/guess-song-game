@@ -1,5 +1,5 @@
 <template>
-  <div class="question-page" v-if="currentQuestion">
+  <div class="question-page" v-if="currentQuestion" :key="refreshKey">
     <div class="card lyrics-card">
       <h2>猜猜這首歌</h2>
       <div class="lyrics">{{ currentQuestion.lyrics }}</div>
@@ -28,19 +28,21 @@
 
 <script setup>
 import { useGameStore } from '@/store/gameStore'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const game = useGameStore()
 const router = useRouter()
+const refreshKey = ref(0)
 
 // 取得當前題目
 const currentQuestion = computed(() => game.getCurrentQuestion())
 
 // 跳過題目
 const passQuestion = () => {
-  game.nextQuestion()
-  router.push('/question')
+  // 移動到下一題並強制重新渲染
+  game.goToNextQuestion()
+  refreshKey.value++
 }
 
 // 顯示答案
