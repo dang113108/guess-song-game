@@ -85,6 +85,7 @@ button:focus-visible {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  width: 100%;
 }
 
 /* Animation classes */
@@ -96,6 +97,57 @@ button:focus-visible {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  #app {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2.4em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+  }
+
+  .card {
+    padding: 1.5em;
+    margin: 0.5em;
+  }
+
+  button {
+    padding: 0.6em 1.2em;
+    width: 100%;
+    max-width: 300px;
+    margin: 0.5rem auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #app {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.4em;
+  }
+
+  .card {
+    padding: 1em;
+    margin: 0.3em;
+  }
+
+  button {
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

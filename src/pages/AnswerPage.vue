@@ -118,6 +118,7 @@ const handleIncorrectAnswer = () => {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.3s ease;
+  padding: 0 1rem;
 }
 
 .answer-page.hidden {
@@ -157,11 +158,13 @@ const handleIncorrectAnswer = () => {
   font-weight: 600;
   color: #3f51b5;
   margin-bottom: 0.5rem;
+  word-break: break-word;
 }
 
 .song-singer {
   font-size: 1.2rem;
   color: #666;
+  word-break: break-word;
 }
 
 .lyrics-preview {
@@ -170,6 +173,8 @@ const handleIncorrectAnswer = () => {
   color: #666;
   padding: 0 1.5rem;
   margin: 1.5rem 0;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 .quote {
@@ -207,6 +212,7 @@ button {
   justify-content: center;
   transition: all 0.3s ease;
   font-weight: 500;
+  min-width: 120px;
 }
 
 .btn-back {
@@ -323,14 +329,114 @@ button {
   color: #c62828;
 }
 
+@media (max-width: 768px) {
+  .answer-page {
+    padding: 0 0.5rem;
+  }
+
+  .answer-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .song-info {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  .song-title {
+    font-size: 1.5rem;
+  }
+
+  .song-singer {
+    font-size: 1.1rem;
+  }
+
+  .lyrics-preview {
+    padding: 0 1rem;
+    margin: 1rem 0;
+  }
+
+  .buttons {
+    gap: 0.6rem;
+  }
+
+  button {
+    padding: 0.7rem 1rem;
+    width: calc(50% - 0.3rem);
+    min-width: unset;
+  }
+
+  .dialog-content {
+    padding: 1.5rem;
+  }
+
+  .dialog-icon {
+    font-size: 4rem;
+  }
+
+  .dialog-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .dialog-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .answer-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .song-info {
+    margin: 0.8rem 0;
+    padding: 0.8rem;
+  }
+
+  .song-title {
+    font-size: 1.3rem;
+  }
+
+  .song-singer {
+    font-size: 1rem;
+  }
+
+  .lyrics-preview {
+    padding: 0 0.8rem;
+    margin: 0.8rem 0;
+    font-size: 0.9rem;
+  }
+
   .buttons {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
-  
+
   button {
     width: 100%;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .dialog-content {
+    padding: 1rem;
+  }
+
+  .dialog-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dialog-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dialog-button {
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
   }
 }
 

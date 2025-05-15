@@ -60,6 +60,7 @@ const endGame = () => {
 .question-page {
   text-align: center;
   animation: fadeIn 0.5s ease-out;
+  padding: 0 1rem;
 }
 
 @keyframes fadeIn {
@@ -87,11 +88,13 @@ const endGame = () => {
   line-height: 1.6;
   font-weight: 500;
   color: #333;
-  padding: 1rem;
+  padding: 1.5rem;
   border-left: 4px solid #3f51b5;
   background-color: #f8f9ff;
   text-align: left;
   border-radius: 0 8px 8px 0;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 .buttons {
@@ -113,6 +116,7 @@ button {
   justify-content: center;
   transition: all 0.3s ease;
   font-weight: 500;
+  min-width: 120px;
 }
 
 .btn-skip {
@@ -171,14 +175,57 @@ button {
   to { transform: rotate(360deg); }
 }
 
+@media (max-width: 768px) {
+  .lyrics-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .lyrics {
+    font-size: 1.2rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .buttons {
+    gap: 0.6rem;
+  }
+
+  button {
+    padding: 0.7rem 1rem;
+    width: calc(50% - 0.3rem);
+    min-width: unset;
+  }
+}
+
 @media (max-width: 480px) {
+  .question-page {
+    padding: 0 0.5rem;
+  }
+
+  .lyrics-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .lyrics {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+  }
+
   .buttons {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
-  
+
   button {
     width: 100%;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .loading {
+    padding: 1rem;
   }
 }
 
