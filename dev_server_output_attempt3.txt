@@ -1,0 +1,9 @@
+
+> guess-song-game@0.0.0 dev
+> vite
+
+
+  VITE v6.3.5  ready in 646 ms
+
+  ➜  Local:   http://localhost:5173/guess-song-game/
+  ➜  Network: use --host to expose
