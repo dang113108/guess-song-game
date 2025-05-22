@@ -40,6 +40,7 @@ const currentQuestion = computed(() => game.getCurrentQuestion())
 
 // 跳過題目
 const passQuestion = () => {
+  game.markAsSkipped() // 標記為跳過
   // 移動到下一題並強制重新渲染
   game.goToNextQuestion()
   refreshKey.value++
