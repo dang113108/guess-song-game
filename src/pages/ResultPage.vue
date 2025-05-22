@@ -59,8 +59,8 @@ const router = useRouter()
 const showDetailsId = ref(null)
 
 // 正確數量與錯誤數量
-const correctCount = computed(() => game.questions.filter(q => q.isCorrect === true).length)
-const incorrectCount = computed(() => game.questions.filter(q => q.isCorrect === false || q.isCorrect === 'skipped').length)
+const correctCount = computed(() => game.questions.value.filter(q => q.isCorrect === true).length)
+const incorrectCount = computed(() => game.questions.value.filter(q => q.isCorrect === false || q.isCorrect === 'skipped').length)
 
 const getStatusText = (status) => {
   if (status === true) return '答對'
